@@ -12,8 +12,9 @@ Grab URLs with timelimit
   id: list
   uses: yakubique/grab-limited@v1
   with:
-    name: test-*
-
+    endpoints: '["https://hacker-news.firebaseio.com/v0/topstories.json", "https://hacker-news.firebaseio.com/v0/topstories.json"]'
+    interval: 300
+    concurrency: 2
 ```
 
 ## Inputs
