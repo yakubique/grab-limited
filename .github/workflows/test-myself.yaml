@@ -1,0 +1,23 @@
+name: Test `grab-limited` action
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-grab-limited:
+    runs-on: [ 'ubuntu-latest' ]
+    name: Test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Test
+        id: test
+        uses: ./
+        with:
+          endpoints: '["https://hacker-news.firebaseio.com/v0/topstories.json", "https://hacker-news.firebaseio.com/v0/topstories.json"]'
+          interval: 300
+          concurrency: 2
+      - name: Check
+        run: |
+          echo "${{ steps.test.outputs.result }}"

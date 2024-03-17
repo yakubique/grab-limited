@@ -1,0 +1,40 @@
+name: "Grab with limits"
+description: "Grab URLs with timelimit"
+author: Vladimir Levin
+branding:
+  icon: code
+  color: purple
+inputs:
+  interval:
+    description: Interval between queries (ms)
+    required: true
+  endpoints:
+    description: Endpoints to call (JSON array or file)
+    required: true
+  method:
+    description: HTTP call method
+    default: 'GET'
+  to_file:
+    description: Save result to JSON file
+    default: 'false'
+  from_file:
+    description: Load endpoints from JSON file
+    default: 'false'
+  retry:
+    description: Amount of retries
+    default: '1'
+  retry_pause:
+    description: Pause between retries (ms)
+    default: '300'
+  headers:
+    description: JSON string with headers to include
+    default: '{}'
+  concurrency:
+    description: Amount of requests at time
+    default: '1'
+outputs:
+  result:
+    description: Result list in JSON format OR path to file
+runs:
+  using: 'node20'
+  main: 'action/index.js'
